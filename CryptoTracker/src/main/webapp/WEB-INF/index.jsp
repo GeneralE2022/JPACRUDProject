@@ -8,11 +8,15 @@
 <meta charset="UTF-8">
 <jsp:include page="bootstrapHead.jsp" />
 
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="./">Welcome to the Crypto Tracker</a>
+  <a class="navbar-brand" href="./">Home</a>
+</nav>
+
 <title>Crypto Tracker</title>
 </head>
 <body>
 
-	<h2>Welcome to the Crypto Tracker</h2>
 
 	<form action="getToken.do" method="GET">
 		Token ID: <input type="text" name="token" /> <input type="submit"

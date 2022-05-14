@@ -5,6 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <jsp:include page="bootstrapHead.jsp" />
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="./">Welcome to the Crypto Tracker</a>
+  <a class="navbar-brand" href="./">Home</a>
+</nav>
 <title>TOKEN INFO</title>
 </head>
 <body>
