@@ -28,10 +28,10 @@ public class CryptoController {
 		return "getSingleToken";
 	}
 
-	@RequestMapping(path = "deleteToken.do", params = "id")
-	public String deleteToken(Integer id, Model model) {
-		Crypto crypto = dao.findById(id);
-		dao.delete(id);
+	@RequestMapping(path = "deleteToken.do", params = "delete")
+	public String deleteToken(Integer delete, Model model) {
+		Crypto crypto = dao.findById(delete);
+		dao.delete(delete);
 		model.addAttribute("c", crypto);
 		return "deleteToken";
 	}
@@ -51,13 +51,13 @@ public class CryptoController {
 	
 	@RequestMapping(path = "createToken.do", params = {"newname", "newsymbol", "newdescription"})
 	public String createToken(String newname, String newsymbol, String newdescription, Model model) {
-		Crypto newCrypto = null; 
+		Crypto newCrypto = new Crypto(); 
 		newCrypto.setName(newname);
 		newCrypto.setToken(newsymbol);
 		newCrypto.setDescription(newdescription);
 		dao.create(newCrypto); 
 		model.addAttribute("newcrypto", newCrypto);
-		return "index";
+		return "createconfirm";
 	}
 	
 }

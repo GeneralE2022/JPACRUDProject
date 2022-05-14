@@ -46,14 +46,14 @@
 	<hr>
 
 	<form action="deleteToken.do" method="GET">
-		Delete token: <input type="text" name="id" /> <input type="submit"
+		Delete token: <input type="text" name=delete /> <input type="submit"
 			value="Delete token" />
 	</form>
 	
 	<hr>
 		<h3>Create your own cryptocurrency</h3>
 	
-		<form action="createToken.do" method="GET">
+		<form action="createToken.do" method="POST">
 		Name: <input type="text" name="newname" /> 
 		Symbol: <input type="text" name="newsymbol" /> 
 		Description: <input type="text" name="newdescription" /> 

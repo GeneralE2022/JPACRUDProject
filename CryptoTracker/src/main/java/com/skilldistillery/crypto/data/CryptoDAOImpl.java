@@ -61,6 +61,7 @@ public class CryptoDAOImpl implements CryptoDAO {
 		newCrypto.setName(crypto.getName());
 		newCrypto.setToken(crypto.getToken());
 		newCrypto.setDescription(crypto.getDescription());
+		em.persist(newCrypto);
 		em.flush();
         em.close();
 		return newCrypto;
