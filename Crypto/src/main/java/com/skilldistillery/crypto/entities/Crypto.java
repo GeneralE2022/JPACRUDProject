@@ -24,6 +24,18 @@ public class Crypto {
 	public Crypto() {
 		super();
 	}
+	
+	
+
+	public Crypto(int id, String name, String token, String description) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.token = token;
+		this.description = description;
+	}
+
+
 
 	// methods
 	public int getId() {

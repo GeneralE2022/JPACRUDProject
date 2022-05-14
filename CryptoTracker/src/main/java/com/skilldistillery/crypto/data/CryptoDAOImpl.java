@@ -3,6 +3,8 @@ package com.skilldistillery.crypto.data;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -24,20 +26,52 @@ public class CryptoDAOImpl implements CryptoDAO {
 
 	@Override
 	public List<Crypto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql = "SELECT token FROM Crypto token";
+		List<Crypto> crypto = em.createQuery(jpql, Crypto.class).getResultList();
+		return crypto;
 	}
 
 	@Override
-	public Crypto updateSingleRecord() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean delete(int id) {
+		boolean deleteConfirm = false; 
+        Crypto crypto = em.find(Crypto.class, id);
+        
+        if (crypto != null) {
+        	em.remove(crypto);
+        	deleteConfirm = !em.contains(crypto); 
+        }
+        em.close();
+        return deleteConfirm; 
 	}
 	
 	@Override
-	public Crypto deleteSingleRecord() {
-		
-		return null; 
+	public Crypto updateSingleRecord(int id, Crypto crypto) {
+
+		Crypto cryptoUpdate = em.find(Crypto.class, id); 
+		cryptoUpdate.setName(crypto.getName());
+		cryptoUpdate.setToken(crypto.getToken());
+		cryptoUpdate.setDescription(crypto.getDescription());
+		em.flush();
+        em.close();
+		return cryptoUpdate;
+	}
+	
+	public Crypto create(Crypto crypto) {
+		Crypto newCrypto = new Crypto();
+		newCrypto.setName(crypto.getName());
+		newCrypto.setToken(crypto.getToken());
+		newCrypto.setDescription(crypto.getDescription());
+		em.flush();
+        em.close();
+		return newCrypto;
 	}
 
 }
+
+
+
+
+
+
+
+

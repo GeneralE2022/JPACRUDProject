@@ -14,29 +14,54 @@
 
 	<h2>Welcome to the Crypto Tracker</h2>
 
-	<form action="index.do" method="GET">
+	<form action="getToken.do" method="GET">
 		Token ID: <input type="text" name="token" /> <input type="submit"
 			value="Show token" />
 	</form>
-	
-	
+
+	<hr>
+
+	${crypto.id} ${crypto.name} ${crypto.token} ${crypto.description}
+
+
 	<hr>
 	<table class="table table-striped table-hover">
 		<tr>
 			<th>ID</th>
-			<th>Title</th>
-			<th>Release year</th>
+			<th>Cryptocurrency</th>
+			<th>Symbol</th>
+			<th>Description</th>
 		</tr>
 
-		<c:forEach var="film" items="${films}">
+		<c:forEach var="crypto" items="${cryptos}">
 			<tr>
-				<td>${film.id}</td>
-				<td><a href="getFilm.do?fid=${film.id}">${film.title}</a></td>
-				<td>${film.releaseYear}</td>
+				<td>${crypto.id}</td>
+				<td><a href="getToken.do?token=${crypto.id}">${crypto.name}</a></td>
+				<td>${crypto.token}</td>
+				<td>${crypto.description}</td>
 
 			</tr>
 		</c:forEach>
 	</table>
+	<hr>
+
+	<form action="deleteToken.do" method="GET">
+		Delete token: <input type="text" name="id" /> <input type="submit"
+			value="Delete token" />
+	</form>
+	
+	<hr>
+		<h3>Create your own cryptocurrency</h3>
+	
+		<form action="createToken.do" method="GET">
+		Name: <input type="text" name="newname" /> 
+		Symbol: <input type="text" name="newsymbol" /> 
+		Description: <input type="text" name="newdescription" /> 
+		<input type="submit" value="Create token" />
+	</form>
+	
+	
+	
 
 
 </body>
